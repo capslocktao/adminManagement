@@ -1,0 +1,27 @@
+@import "../../../commonStyle/index.less";
+#login {
+  height: 100%;
+  width: 100%;
+  background-image: url("../../../assets/img/loginBg.jpg");
+  position: relative;
+  .login-box {
+    width: 400px;
+    height: 280px;
+    margin-top: -150px;
+    padding: 10px;
+    border-radius: @border-radius-default;
+    background: #fff;
+    .horizontal-vertical-center(absolute);
+    h3 {
+      text-align: center;
+      color: @font-color-1;
+      font-size: @font-size-default;
+      font-weight: normal;
+    }
+    .login-form {
+      width: 80%;
+      height: 80%;
+      margin-top: @padding-large;
+    }
+  }
+}

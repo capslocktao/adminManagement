@@ -1,0 +1,65 @@
+@import "../../../commonStyle/index.less";
+#main {
+  height: 100%;
+  .el-container {
+    height: 100%;
+    .el-header {
+      padding: 0 @padding-large;
+      line-height: 60px;
+      background-color: #1e2a35;
+      color: @body-color-base;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .company-info {
+        .logo {
+          height: 60px;
+          font-size: 0;
+          cursor: pointer;
+          img {
+            width: 100px;
+            margin-top: 10px;
+          }
+        }
+      }
+      .user {
+        font-size: @font-size-default;
+        .dropdown-name {
+          color: @body-color-base;
+          cursor: pointer;
+        }
+        .role {
+          color: @font-color-2
+        }
+      }
+    }
+    .main-view {
+      width: 100%;
+      background-color: @body-color-base;
+      color: #333;
+      text-align: center;
+      line-height: 160px;
+    }
+
+    .el-aside,.aside-menu {
+      background-color: #33485b;
+      color: #333;
+      text-align: center;
+      height: 100%;
+      .main-menu {
+        height: 100%;
+        margin-left: -70px;
+        .el-menu-item {
+          background: none!important;
+        }
+        .nav-item {
+          margin-left: -30px;
+        }
+        .sub-nav-item {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+
+}
