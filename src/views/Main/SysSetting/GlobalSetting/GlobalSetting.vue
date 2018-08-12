@@ -2,8 +2,6 @@
     <div id="global-setting">
       <div class="default-setting">
         <Title title="默认设置"/>
-        <button @click="add">增加</button>
-        <div>{{count}}</div>
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="setting-form">
           <el-form-item label="活动名称" prop="name">
             <el-input v-model="ruleForm.name"></el-input>
@@ -121,9 +119,7 @@
       }
     },
     computed: {
-      count() {
-        return this.$store.state.count.counter
-      }
+
     }
   }
 </script>

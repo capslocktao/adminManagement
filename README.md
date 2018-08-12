@@ -28,3 +28,5 @@ npm run lint-fix
 
 * 在**src/index.js**中引入编译好的样式文件  **import '../theme/index.css'**
 
+* 如编译报错：'Node Sass could not find a binding for your current environment',则可能是因为node环境与项目不同导致，尝试执行**npm rebuild node-sass**修复
+
