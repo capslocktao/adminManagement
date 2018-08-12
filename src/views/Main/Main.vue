@@ -30,24 +30,30 @@
             active-text-color="#fff"
             @open="handleOpen"
             @close="handleClose">
-            <router-link v-for="m in menus" class="item" :to="m.to" v-if="!m.children" >
+            <router-link v-for="m in menus" class="item" :to="m.to" v-if="!m.children" :key="m.to">
               <el-menu-item :index="m.name" class="nav-item">
                 <i :class="m.icon"/>
-                <span slot="title">{{m.name}}</span>
+                <span slot="title" class="nav-title">{{m.name}}</span>
               </el-menu-item>
             </router-link>
-            <el-submenu v-for="v in menus" :index="v.name" v-if="v.children" class="sub-item">
+            <el-submenu v-for="v in menus" :index="v.name" v-if="v.children" :key="v.to" class="sub-item">
                 <template slot="title">
                   <i :class="v.icon"/>
-                  <span>{{v.name}}</span>
+                  <span class="nav-title">{{v.name}}</span>
                 </template>
-                <router-link v-for="k in v.children" :to="k.to">
+                <router-link v-for="k in v.children" :to="k.to" :key="k.to">
                   <el-menu-item :index="k.name" class="sub-nav-item">{{k.name}}</el-menu-item>
                 </router-link>
               </el-submenu>
           </el-menu>
         </el-aside>
         <el-main class="main-view">
+          <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+            <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+            <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+          </el-breadcrumb>
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -78,8 +84,8 @@ export default {
           to: `${this.$host}/settings`,
           children: [
             {
-              name: '权限管理',
-              to: `${this.$host}/settings/authority`
+              name: '全局设置',
+              to: `${this.$host}/settings/global-setting`
             }
           ]
         }

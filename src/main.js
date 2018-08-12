@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { host } from './constants/host'
+import store from './store'
 import {
   Pagination,
   Dialog,
@@ -62,7 +63,6 @@ import {
   CollapseItem,
   Cascader,
   ColorPicker,
-  Transfer,
   Container,
   Header,
   Aside,
@@ -152,6 +152,7 @@ Vue.prototype.$host = host
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -22,13 +22,15 @@ const router = new Router({
           component: () => import('@/views/Main/Home/Home.vue'),
         },
         {
-          path: `${host}/settings/authority`,
+          path: `${host}/settings/global-setting`,
           name: 'Authority',
-          component: () => import('@/views/Main/Authority/Authority.vue'),
+          component: () => import('@/views/Main/SysSetting/GlobalSetting/GlobalSetting.vue'),
         },
       ]
     }
-  ]
+  ],
+  linkActiveClass: 'active-menu',
+  linkExactActiveClass: 'persist-active'
 })
 router.beforeEach((to, from, next) => {
   next()

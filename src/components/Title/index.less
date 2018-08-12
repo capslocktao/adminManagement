@@ -1,0 +1,17 @@
+@import "../../commonStyle/index.less";
+#title {
+  position: relative;
+  font-size: @font-size-large;
+  margin-left: @padding-default/2;
+  margin-bottom: @padding-default;
+  &:before {
+    content: '';
+    display: block;
+    height: 18px;
+    width: 6px;
+    background: @primary-color;
+    position: absolute;
+    left: -12px;
+    top: 3px;
+  }
+}
