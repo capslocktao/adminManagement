@@ -1,10 +1,10 @@
 <template>
-  <div>Authority</div>
+    <router-view></router-view>
 </template>
 
 <script>
   export default {
-    name: 'Authority'
+    name: 'SysSetting'
   }
 </script>
 

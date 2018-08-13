@@ -50,10 +50,7 @@
         <el-main class="main-view">
           <div class="breadcrumb">
             <el-breadcrumb separator-class="el-icon-arrow-right">
-              <el-breadcrumb-item class="link-item" :to="{ path: '/' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item class="link-item">活动管理</el-breadcrumb-item>
-              <el-breadcrumb-item class="link-item">活动列表</el-breadcrumb-item>
-              <el-breadcrumb-item class="link-item">活动详情</el-breadcrumb-item>
+              <el-breadcrumb-item v-for = "(v, i) in routeList" :to="i === 0? '' : { path: v.path }" :key="v.path">{{v.name}}</el-breadcrumb-item>
             </el-breadcrumb>
           </div>
           <router-view></router-view>
@@ -88,13 +85,16 @@ export default {
             {
               name: '全局设置',
               to: `${this.$host}/settings/global-setting`
+            },
+            {
+              name: '权限设置',
+              to: `${this.$host}/settings/authority`
             }
           ]
         }
       ]
     }
   },
-
   methods: {
     userEvent(command) {
       switch (command) {
@@ -140,6 +140,17 @@ export default {
     }
   },
   computed: {
+    routeList() {
+      const routes = []
+      for (let i = 1; i < this.$route.matched.length; i++) {
+        const item = this.$route.matched[i]
+        routes.push({
+          name: item.meta.title,
+          path: item.path
+        })
+      }
+      return routes
+    },
     userRole() {
       switch (this.user.roleCode) {
         case ROLE_SYS_ADMIN:
