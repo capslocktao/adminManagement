@@ -23,7 +23,8 @@
       <el-container>
         <el-aside width="200px" class="aside-menu">
           <el-menu
-            default-active="2"
+            :default-active="routeList[0].path"
+            :default-openeds="[routeList[0].path]"
             class="main-menu"
             background-color="#33485b"
             text-color="#afafaf"
@@ -36,7 +37,7 @@
                 <span slot="title" class="nav-title">{{m.name}}</span>
               </el-menu-item>
             </router-link>
-            <el-submenu v-for="v in menus" :index="v.name" v-if="v.children" :key="v.to" class="sub-item">
+            <el-submenu v-for="v in menus" :index="v.to" v-if="v.children" :key="v.to" class="sub-item">
                 <template slot="title">
                   <i :class="v.icon"/>
                   <span class="nav-title">{{v.name}}</span>
@@ -50,7 +51,7 @@
         <el-main class="main-view">
           <div class="breadcrumb">
             <el-breadcrumb separator-class="el-icon-arrow-right">
-              <el-breadcrumb-item v-for = "(v, i) in routeList" :to="i === 0? '' : { path: v.path }" :key="v.path">{{v.name}}</el-breadcrumb-item>
+              <el-breadcrumb-item v-for = "(v, i) in routeList" :to="i === 0 && v.path !== '/home'? '' : { path: v.path }" :key="v.path">{{v.name}}</el-breadcrumb-item>
             </el-breadcrumb>
           </div>
           <router-view></router-view>
@@ -66,6 +67,7 @@ export default {
   name: 'Main',
   data() {
     return {
+      prefix: this.$host,
       user: {
         userId: 'GFSYYGKJXA5454744DFSAA',
         userName: '用户xx',
@@ -75,20 +77,20 @@ export default {
         {
           name: '首页',
           icon: 'icon-home',
-          to: `${this.$host}/`
+          to: `/home`,
         },
         {
           name: '系统设置',
           icon: 'icon-setting',
-          to: `${this.$host}/settings`,
+          to: `/settings`,
           children: [
             {
               name: '全局设置',
-              to: `${this.$host}/settings/global-setting`
+              to: `/settings/global-setting`
             },
             {
               name: '权限设置',
-              to: `${this.$host}/settings/authority`
+              to: `/settings/authority`
             }
           ]
         }

@@ -5,27 +5,39 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
+  base: host,
   routes: [
     {
-      path: `${host}/login`,
+      path: `/login`,
       name: '登录',
       component: () => import('@/views/Login/Login')
     },
     {
-      path: `${host}/`,
+      path: `/`,
       name: 'Main',
+      redirect: '/home',
       component: () => import('@/views/Main/Main'),
       children: [
         {
-          path: `${host}/`,
+          path: `/home`,
           name: 'Home',
           meta: {
             title: '首页'
           },
           component: () => import('@/views/Main/Home/Home.vue'),
+          children: [
+            {
+              path: '/home/home-item/:id',
+              name: 'SubHomePage',
+              meta: {
+                title: '首页详情'
+              },
+              component: () => import('@/views/Main/Home/SubHomePage/SubHomePage.vue'),
+            }
+          ]
         },
         {
-          path: `${host}/settings`,
+          path: `/settings`,
           name: 'settings',
           meta: {
             title: '系统设置'
@@ -33,7 +45,7 @@ const router = new Router({
           component: () => import('@/views/Main/SysSetting/SysSetting.vue'),
           children: [
             {
-              path: `${host}/settings/global-setting`,
+              path: `/settings/global-setting`,
               name: 'GlobalSetting',
               meta: {
                 title: '全局设置'
@@ -41,7 +53,7 @@ const router = new Router({
               component: () => import('@/views/Main/SysSetting/GlobalSetting/GlobalSetting.vue'),
             },
             {
-              path: `${host}/settings/authority`,
+              path: `/settings/authority`,
               name: 'Authority',
               meta: {
                 title: '权限设置'
@@ -49,7 +61,7 @@ const router = new Router({
               component: () => import('@/views/Main/SysSetting/Authority/Authority.vue'),
               children: [
                 {
-                  path: `${host}/settings/authority/:id`,
+                  path: `/settings/authority/:id`,
                   name: 'Detail',
                   meta: {
                     title: '权限详情'

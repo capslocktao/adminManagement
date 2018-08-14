@@ -12,7 +12,7 @@
     name: 'Authority',
     data() {
       return {
-        prefix: `${this.$host}/settings/authority`,
+        prefix: `/settings/authority`,
         list: [
           {
             name: '权限1',
