@@ -54,7 +54,9 @@
               <el-breadcrumb-item v-for = "(v, i) in routeList" :to="i === 0 && v.path !== '/home'? '' : { path: v.path }" :key="v.path">{{v.name}}</el-breadcrumb-item>
             </el-breadcrumb>
           </div>
-          <router-view></router-view>
+          <transition name="fade">
+            <router-view/>
+          </transition>
         </el-main>
       </el-container>
     </el-container>
